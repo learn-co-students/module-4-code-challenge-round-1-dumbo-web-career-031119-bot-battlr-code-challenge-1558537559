@@ -29,7 +29,7 @@ const BotCard = props => {
             props.removeEbot(bot)
           }
           else {
-            props.handleClick(bot)
+            props.showBotPage(bot)
           }
         }}>
         <div className="image">
