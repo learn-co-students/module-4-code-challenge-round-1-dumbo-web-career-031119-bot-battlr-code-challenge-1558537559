@@ -25,7 +25,12 @@ class BotsPage extends React.Component {
     let bot = [...this.state.allBots].find(bot => {
         return bot.id === id
     })
+    let botArr = [...this.state.allBots].filter(bot => {
+      return bot.id != id
+    });
+
     this.setState({
+      allBots: botArr,
       armyBots: [...this.state.armyBots, bot]
     })
   }
@@ -38,7 +43,9 @@ class BotsPage extends React.Component {
   }
 
   render() {
-    // console.log('hello from botspage',this.state.armyBots)
+    console.log('armybots',this.state.armyBots)
+    console.log('allbots',this.state.allBots)
+
     return (
       <div>
         <YourBotArmy army={this.state.armyBots} handleArmyBotClick={this.handleArmyBotClick}/>
