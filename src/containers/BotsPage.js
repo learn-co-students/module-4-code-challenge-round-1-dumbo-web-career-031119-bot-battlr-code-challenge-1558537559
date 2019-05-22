@@ -1,12 +1,16 @@
 import React from "react";
+import BotCollection from '../containers/BotCollection.js'
+import YourBotArmy from '../containers/YourBotArmy.js'
 
 class BotsPage extends React.Component {
-  //start here with your code for step one
+
+
 
   render() {
+
     return (
       <div>
-        {/* put your components here */}
+          <BotCollection />
       </div>
     );
   }
