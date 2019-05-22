@@ -1,6 +1,7 @@
 import React from "react";
 import BotCollection from './BotCollection'
 import YourBotArmy from './YourBotArmy'
+import BotSpecs from '../components/BotSpecs'
 
 const url = 'https://bot-battler-api.herokuapp.com/api/v1/bots'
 
@@ -24,6 +25,7 @@ class BotsPage extends React.Component {
   }
 
   enlistBot = (botID) => {
+    console.log(botID)
     if (!this.state.enlistedBots.includes(botID)){
       this.setState({
         enlistedBots: [...this.state.enlistedBots, botID]
@@ -51,15 +53,39 @@ class BotsPage extends React.Component {
     })
   }
 
-  showBot = () => {
+  showBot = (bot) => {
+    this.setState({
+      showBot: bot
+    })
+  }
 
+  goBack = () => {
+    this.setState({
+      showBot: {}
+    })
+  }
+
+  chooseDisplay = () => {
+    if (this.state.showBot.id){
+      return < BotSpecs bot={this.state.showBot} goBack={this.goBack} enlistBot={this.enlistBot}/>
+    }
+    else{
+      return(<div>
+      < YourBotArmy bots={this.filterBots()} showBot={this.showBot}/>
+      < BotCollection bots={this.state.bots} showBot={this.showBot}/>
+      </div>
+      )
+    }
   }
 
   render() {
     return (
       <div>
-        < YourBotArmy bots={this.filterBots()} removeBot={this.removeBot}/>
-        < BotCollection bots={this.state.bots} enlistBot={this.enlistBot}/>
+        {/* < YourBotArmy bots={this.filterBots()} removeBot={this.removeBot}/>
+        < BotCollection bots={this.state.bots} enlistBot={this.enlistBot}/> 
+        < YourBotArmy bots={this.filterBots()} showBot={this.showBot}/>
+        < BotCollection bots={this.state.bots} showBot={this.showBot}/> */}
+        {this.chooseDisplay()}
       </div>
     );
   }
