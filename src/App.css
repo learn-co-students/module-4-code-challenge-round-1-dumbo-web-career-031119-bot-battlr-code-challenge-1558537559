@@ -12,3 +12,9 @@
 .ui.grid {
   padding: 0px 20px;
 }
+
+.mySearch{
+	text-align: center;
+	justify-content: center;
+	padding: 1em;
+}
