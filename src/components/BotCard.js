@@ -1,8 +1,9 @@
 import React from "react";
+import BotCollection from '../containers/BotCollection'
+import BotsPage from '../containers/BotsPage'
 
 const BotCard = props => {
   const { bot } = props;
-
   let botType;
 
   switch (bot.bot_class) {
