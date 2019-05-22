@@ -4,13 +4,9 @@ import BotCard from "../components/BotCard";
 class YourBotArmy extends React.Component {
   //your bot army code here...
 
-  enlistBot = () => {
-    return null
-  }
-
   createBots = (bots) => {
 		return bots.map((bot)=>{
-			return < BotCard bot={{...bot}} enlistBot={this.enlistBot}/>
+			return < BotCard bot={{...bot}} enlistBot={this.props.removeBot}/>
 		})
 	}
 

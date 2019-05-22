@@ -9,7 +9,18 @@ class BotsPage extends React.Component {
 
   state = {
     bots: [],
-    enlistedBots: []
+    enlistedBots: [],
+    showBot: {}
+  }
+
+  componentDidMount(){
+    fetch(url)
+    .then(resp => resp.json())
+    .then(json => {
+      this.setState({
+        bots: json
+      })
+    })
   }
 
   enlistBot = (botID) => {
@@ -23,26 +34,31 @@ class BotsPage extends React.Component {
     }
   }
 
+  removeBot = (botID) => {
+    let newArmy = this.state.enlistedBots.filter((bot)=>{
+      // debugger;
+      return bot !== botID
+    })
+    // debugger;
+    this.setState({
+      enlistedBots: newArmy
+    })
+  }
+
   filterBots = () => {
     return this.state.bots.filter((bot)=>{
       return this.state.enlistedBots.includes(bot.id)
     })
   }
 
-  componentDidMount(){
-    fetch(url)
-    .then(resp => resp.json())
-    .then(json => {
-      this.setState({
-        bots: json
-      })
-    })
+  showBot = () => {
+
   }
 
   render() {
     return (
       <div>
-        < YourBotArmy bots={this.filterBots()}/>
+        < YourBotArmy bots={this.filterBots()} removeBot={this.removeBot}/>
         < BotCollection bots={this.state.bots} enlistBot={this.enlistBot}/>
       </div>
     );
