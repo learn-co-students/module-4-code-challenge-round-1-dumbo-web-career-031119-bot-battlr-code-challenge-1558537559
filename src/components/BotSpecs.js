@@ -1,4 +1,5 @@
 import React from "react";
+import BotsPage from '../containers/BotsPage'
 
 const BotSpecs = props => {
   let { bot } = props;
