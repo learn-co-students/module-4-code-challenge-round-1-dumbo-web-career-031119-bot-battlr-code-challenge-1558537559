@@ -68,7 +68,7 @@ class BotsPage extends React.Component {
 
         {this.state.show ?
           <BotSpecs goBack={this.goBack} handleClick={this.handleClick} bot={this.state.showBot}/>
-          : <BotCollection showBotPage={this.showBotPage} handleClick={this.handleClick} bots={this.state.bots}/>}
+          : <BotCollection showBotPage={this.showBotPage} bots={this.state.bots}/>}
 
       </div>
     );
